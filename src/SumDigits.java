@@ -3,6 +3,9 @@ import java.util.*;
 
 public class SumDigits {
 
+    /*
+     * This function Returns an integer array list
+     */
     public static ArrayList<Integer> sum(int maxDigit, int target){
 
         ArrayList<Integer> result = new ArrayList<>();
@@ -26,9 +29,19 @@ public class SumDigits {
         }
         return result;
     }
-    public static void main(String[] args) throws IOException{
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-
+    /*
+     * This function asks two values to calculate all possible 4-digit numbers
+     * where each one is less than or equal to the input value1 (maxDigit),
+     * and the sum of the digits of each generated number is equal to the informed value2 (target).
+     *
+     * Example:
+     * maxDigit=6
+     * target=21
+     * result = [3666, 4566, 4656, 4665, 5466, 5556, 5565, 5646, 5655, 5664, 6366, 6456, 6465, 6546, 6555, 6564, 6636, 6645, 665 6663]
+     * 
+     */
+    public static void main(String[] args) throws IOException{        
+        
         Scanner myInput = new Scanner(System.in);
         
         System.out.println("Informar qual o maior número permitido em cada dígito: ");
@@ -38,7 +51,6 @@ public class SumDigits {
         int target = Integer.parseInt(myInput.nextLine());
         
         myInput.close();
-        
 
         ArrayList<Integer> result = sum(maxDigit, target);
         System.out.println(result);
