@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class SumDigits {
@@ -12,23 +11,39 @@ public class SumDigits {
         ArrayList<Integer> result = new ArrayList<>();
 
         if (maxDigit > 0 && maxDigit < 10){
-            // t for thousands    
-            for (int t=1;t<=maxDigit;t++){
-                // h for hundreds
-                for (int h=0;h<=maxDigit;h++){
-                    // d for dozens
-                    for (int d=0;d<=maxDigit;d++){
-                        // u for units
-                        for (int u=0;u<=maxDigit;u++){
-                            int sum = t + h + d + u;
-                            if (sum == target){
-                                int conj = (t*1000) + (h*100) + (d*10) + u;
-                                result.add(conj);
-                            }
+            var t = 1; // thousands
+            var h = 0; // hundreds
+            var d = 0; // dozens
+            var u = 0; // units
+    
+            var _maxdigit = maxDigit * 1111;
+            for (int i=1000; i<=_maxdigit; i++){
+    
+                if (u > maxDigit){
+                    u = 0;
+                    d++;
+                    i = i + 10 - maxDigit - 1;
+                    
+                    if (d > maxDigit){
+                        d = 0;
+                        h++;
+                        i = i + 100 - (maxDigit * 10) - 10;
+                        
+                        if (h > maxDigit){
+                            h = 0;
+                            t++;
+                            i = i + 1000 - (maxDigit * 100) - 100;
                         }
                     }
                 }
-            }       
+    
+                int sum = t + h + d + u;
+    
+                if (sum == target){
+                    result.add(i);
+                }
+                u++;
+            }            
         }
         return result;
     }
