@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class SumDigits {
@@ -10,24 +11,25 @@ public class SumDigits {
 
         ArrayList<Integer> result = new ArrayList<>();
 
-        // t for thousands    
-        for (int t=1;t<=maxDigit;t++){
-            // h for hundreds
-            for (int h=0;h<=maxDigit;h++){
-                // d for dozens
-                for (int d=0;d<=maxDigit;d++){
-                    // u for units
-                    for (int u=0;u<=maxDigit;u++){
-                        int sum = t + h + d + u;
-                        if (sum == target){
-                            int conj = (t*1000) + (h*100) + (d*10) + u;
-                            result.add(conj);
+        if (maxDigit > 0 && maxDigit < 10){
+            // t for thousands    
+            for (int t=1;t<=maxDigit;t++){
+                // h for hundreds
+                for (int h=0;h<=maxDigit;h++){
+                    // d for dozens
+                    for (int d=0;d<=maxDigit;d++){
+                        // u for units
+                        for (int u=0;u<=maxDigit;u++){
+                            int sum = t + h + d + u;
+                            if (sum == target){
+                                int conj = (t*1000) + (h*100) + (d*10) + u;
+                                result.add(conj);
+                            }
                         }
                     }
                 }
-            }
-        }       
-
+            }       
+        }
         return result;
     }
     /*
@@ -54,6 +56,12 @@ public class SumDigits {
         myInput.close();
 
         ArrayList<Integer> result = sum(maxDigit, target);
-        System.out.println(result);
+        if(result.size() < 1){
+            System.out.println("null");
+        }
+        else{
+            System.out.println(result);
+        }
+        
     }
 }
