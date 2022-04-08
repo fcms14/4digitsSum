@@ -10,14 +10,14 @@ public class SumDigits {
 
         ArrayList<Integer> result = new ArrayList<>();
 
-        // t for thousands
+        // t for thousands    
         for (int t=1;t<=maxDigit;t++){
             // h for hundreds
-            for (int h=1;h<=maxDigit;h++){
-                // d for dozens7
-                for (int d=1;d<=maxDigit;d++){
+            for (int h=0;h<=maxDigit;h++){
+                // d for dozens
+                for (int d=0;d<=maxDigit;d++){
                     // u for units
-                    for (int u=1;u<=maxDigit;u++){
+                    for (int u=0;u<=maxDigit;u++){
                         int sum = t + h + d + u;
                         if (sum == target){
                             int conj = (t*1000) + (h*100) + (d*10) + u;
@@ -26,7 +26,8 @@ public class SumDigits {
                     }
                 }
             }
-        }
+        }       
+
         return result;
     }
     /*
@@ -35,9 +36,9 @@ public class SumDigits {
      * and the sum of the digits of each generated number is equal to the informed value2 (target).
      *
      * Example:
-     * maxDigit=6
-     * target=21
-     * result = [3666, 4566, 4656, 4665, 5466, 5556, 5565, 5646, 5655, 5664, 6366, 6456, 6465, 6546, 6555, 6564, 6636, 6645, 665 6663]
+     * maxDigit = 6
+     * target   = 21
+     * result   = [3666, 4566, 4656, 4665, 5466, 5556, 5565, 5646, 5655, 5664, 6366, 6456, 6465, 6546, 6555, 6564, 6636, 6645, 6654, 6663]
      * 
      */
     public static void main(String[] args) throws IOException{        
